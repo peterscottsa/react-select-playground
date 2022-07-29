@@ -182,6 +182,7 @@ function App() {
                 <Select
                     label="Pick your favourite thing"
                     name="multi"
+                    isMulti
                     options={options}
                     onChange={(value) => setMultiStateState(value)}
                 />
