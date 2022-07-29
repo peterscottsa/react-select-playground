@@ -2,32 +2,37 @@ import React from 'react'
 import * as s from './select.styles'
 import ReactSelect from 'react-select'
 
-export const Select = ({ components, styles, ...props }) => {
+export const Select = ({ components, styles, name, label, ...props }) => {
     return (
-        <ReactSelect
-            components={{
-                Control,
-                ValueContainer,
-                Input,
-                SingleValue,
-                SelectContainer,
-                Option,
-                DropdownIndicator,
-                IndicatorsContainer,
-                Menu,
-                MenuList,
-                Group,
-                GroupHeading,
-                ...components,
-            }}
-            styles={{
-                // No-Ops to remove default styling
-                option: () => ({}),
-                indicatorSeparator: () => {},
-                ...styles,
-            }}
-            {...props}
-        />
+        <div>
+            {label && <label htmlFor={name}>{label}</label>}
+            <ReactSelect
+                name={name}
+                innerId={name}
+                components={{
+                    Control,
+                    ValueContainer,
+                    Input,
+                    SingleValue,
+                    SelectContainer,
+                    Option,
+                    DropdownIndicator,
+                    IndicatorsContainer,
+                    Menu,
+                    MenuList,
+                    Group,
+                    GroupHeading,
+                    ...components,
+                }}
+                styles={{
+                    // No-Ops to remove default styling
+                    option: () => ({}),
+                    indicatorSeparator: () => {},
+                    ...styles,
+                }}
+                {...props}
+            />
+        </div>
     )
 }
 
@@ -101,3 +106,7 @@ export const Input = (props) => <s.Input {...props} />
 export const Menu = (props) => <s.Menu {...props} />
 
 export const MenuList = (props) => <s.MenuList {...props} />
+
+Select.Option = s.Option
+Select.Menu = s.Menu
+Select.SingleValue = s.SingleValue
