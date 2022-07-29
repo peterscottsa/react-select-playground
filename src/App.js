@@ -121,7 +121,7 @@ const groupedCustomOptions = [
 
 const StyledOption = styled(Select.Option)`
     display: grid;
-    grid-template-columns: auto 1fr auto;
+    grid-template-columns: 1fr auto;
     align-items: center;
     grid-gap: 10px;
 `
