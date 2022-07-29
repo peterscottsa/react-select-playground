@@ -106,6 +106,7 @@ const StyledOption = styled(Select.Option)`
 const CustomOption = ({ children, ...props }) => {
     return (
         <StyledOption {...props}>
+            {props.data.icon}
             {children}
             {props.isSelected ? <BiCheck color="black" size={16} /> : null}
         </StyledOption>
