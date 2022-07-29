@@ -122,7 +122,7 @@ const StyledOptionDescription = styled(Select.Option)`
 `
 
 const Description = styled.p`
-    color: lightgray;
+    color: #999;
     margin: 0;
     padding: 0;
 `
