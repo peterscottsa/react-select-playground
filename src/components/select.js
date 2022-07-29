@@ -101,6 +101,7 @@ const Option = ({ children, ...props }) => (
 const ValueContainer = (props) => <s.ValueContainer {...props} />
 
 const SingleValue = (props) => <s.SingleValue {...props} />
+
 const MultiValue = (props) => <s.MultiValue {...props} />
 
 export const Input = (props) => <s.Input {...props} />

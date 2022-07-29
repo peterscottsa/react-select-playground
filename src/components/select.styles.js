@@ -40,6 +40,12 @@ export const MultiValue = styled(components.MultiValue)`
         color: white;
         border-radius: 3px;
         font-size: 14px;
+
+        [role='button']:hover {
+            background-color: black;
+            color: white;
+            cursor: pointer;
+        }
     }
 `
 
