@@ -149,6 +149,8 @@ function App() {
     const [groupedState, setGroupedState] = useState('')
     const [multiState, setMultiStateState] = useState([])
     const [custom, setCustom] = useState('')
+    const [customIcons, setCustomIcons] = useState('')
+    const [groupedCustom, setGroupedCustom] = useState('')
 
     return (
         <>
@@ -208,9 +210,9 @@ function App() {
                     name="custom"
                     options={animalOptionsWithDescriptions}
                     components={{ Option: OptionDescription }}
-                    onChange={({ value }) => setCustom(value)}
+                    onChange={({ value }) => setCustomIcons(value)}
                 />
-                <h3>Your selection: {JSON.stringify(custom)}</h3>
+                <h3>Your selection: {JSON.stringify(customIcons)}</h3>
             </section>
 
             <section>
@@ -220,9 +222,9 @@ function App() {
                     name="custom"
                     options={groupedCustomOptions}
                     components={{ Option: OptionDescription }}
-                    onChange={({ value }) => setCustom(value)}
+                    onChange={({ value }) => setGroupedCustom(value)}
                 />
-                <h3>Your selection: {JSON.stringify(custom)}</h3>
+                <h3>Your selection: {JSON.stringify(groupedCustom)}</h3>
             </section>
         </>
     )
