@@ -34,6 +34,15 @@ export const SingleValue = styled(components.SingleValue)`
     line-height: normal;
 `
 
+export const MultiValue = styled(components.MultiValue)`
+    && {
+        background-color: black;
+        color: white;
+        border-radius: 3px;
+        font-size: 14px;
+    }
+`
+
 export const GroupLabelContainer = styled.div`
     display: grid;
     grid-template-columns: auto 1fr;
