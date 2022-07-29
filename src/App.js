@@ -41,6 +41,29 @@ const animalOptionsWithIcons = [
     },
 ]
 
+const countryOptionsWithIcons = [
+    {
+        value: 'za',
+        label: 'South Africa',
+        icon: '🇿🇦',
+    },
+    {
+        value: 'uk',
+        label: 'United Kingdom',
+        icon: '🇬🇧',
+    },
+    {
+        value: 'usa',
+        label: 'United States',
+        icon: '🇺🇸',
+    },
+    {
+        value: 'pt',
+        label: 'Portugal',
+        icon: '🇵🇹',
+    },
+]
+
 const animalOptionsWithDescriptions = [
     {
         value: 'rabbit',
@@ -106,10 +129,17 @@ const StyledOption = styled(Select.Option)`
 const CustomOption = ({ children, ...props }) => {
     return (
         <StyledOption {...props}>
-            {props.data.icon}
-            {children}
+            {props.data.icon} {children}
             {props.isSelected ? <BiCheck color="black" size={16} /> : null}
         </StyledOption>
+    )
+}
+
+const CustomSingleValue = ({ children, ...props }) => {
+    return (
+        <Select.SingleValue {...props}>
+            {props.data.icon} {children}
+        </Select.SingleValue>
     )
 }
 
@@ -195,10 +225,13 @@ function App() {
             <section>
                 <h1>Custom options with Icons</h1>
                 <Select
-                    label="Pick your favourite thing"
+                    label="Pick your favourite country"
                     name="custom"
-                    options={animalOptionsWithIcons}
-                    components={{ Option: CustomOption }}
+                    options={countryOptionsWithIcons}
+                    components={{
+                        Option: CustomOption,
+                        SingleValue: CustomSingleValue,
+                    }}
                     onChange={({ value }) => setCustom(value)}
                 />
                 <h3>Your selection: {JSON.stringify(custom)}</h3>
