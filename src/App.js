@@ -43,22 +43,22 @@ const animalOptionsWithIcons = [
 
 const countryOptionsWithIcons = [
     {
-        value: 'za',
+        value: '27',
         label: 'South Africa',
         icon: '🇿🇦',
     },
     {
-        value: 'uk',
+        value: '44',
         label: 'United Kingdom',
         icon: '🇬🇧',
     },
     {
-        value: 'usa',
+        value: '01',
         label: 'United States',
         icon: '🇺🇸',
     },
     {
-        value: 'pt',
+        value: '351',
         label: 'Portugal',
         icon: '🇵🇹',
     },
@@ -227,6 +227,7 @@ function App() {
                 <Select
                     label="Pick your favourite country"
                     name="custom"
+                    isSearchable={false}
                     options={countryOptionsWithIcons}
                     components={{
                         Option: CustomOption,
