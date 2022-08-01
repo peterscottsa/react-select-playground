@@ -99,6 +99,7 @@ const groupedCustomOptions = [
 const StyledOption = styled(Select.Option)`
     display: grid;
     align-items: center;
+    grid-template-columns: 1fr auto;
     grid-gap: 10px;
 `
 
@@ -106,10 +107,10 @@ const CustomOption =
     (config) =>
     ({ children, ...props }) => {
         return (
-            <StyledOption {...props} {...config}>
-                {config?.iconLeft && props.data.icon}
+            <StyledOption {...props} config={config}>
+                {config?.iconPosition === 'left' && props.data.icon}
                 {children}
-                {config?.iconRight && props.data.icon}
+                {config?.iconPosition === 'right' && props.data.icon}
                 {props.isSelected ? (
                     <BiCheck color="black" style={{ fontSize: 16 }} />
                 ) : null}
@@ -218,8 +219,7 @@ function App() {
                     options={countryOptionsWithIcons}
                     components={{
                         Option: CustomOption({
-                            iconRight: true,
-                            iconLeft: false,
+                            iconPosition: 'left',
                         }),
                         SingleValue: CustomSingleValue,
                     }}
