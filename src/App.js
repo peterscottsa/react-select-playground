@@ -18,29 +18,6 @@ const animalOptions = [
     { value: 'lion', label: 'Lion' },
 ]
 
-const animalOptionsWithIcons = [
-    {
-        value: 'rabbit',
-        label: 'Rabbit',
-        icon: <BiBug color="black" size={16} />,
-    },
-    {
-        value: 'cat',
-        label: 'Cat',
-        icon: <BiBug color="black" size={16} />,
-    },
-    {
-        value: 'dog',
-        label: 'Dog',
-        icon: <BiBug color="black" size={16} />,
-    },
-    {
-        value: 'lion',
-        label: 'Lion',
-        icon: <BiBug color="black" size={16} />,
-    },
-]
-
 const countryOptionsWithIcons = [
     {
         value: '27',
@@ -90,12 +67,12 @@ const animalOptionsWithDescriptions = [
 const options = [
     {
         label: 'Flavours',
-        icon: <BiCookie color="black" size={16} />,
+        icon: <BiCookie color="black" style={{ fontSize: 16 }} />,
         options: flavourOptions,
     },
     {
         label: 'Animals',
-        icon: <BiBug color="black" size={16} />,
+        icon: <BiBug color="black" style={{ fontSize: 16 }} />,
         options: animalOptions,
     },
 ]
@@ -103,12 +80,12 @@ const options = [
 const groupedCustomOptions = [
     {
         label: 'Flavours',
-        icon: <BiCookie color="black" size={16} />,
+        icon: <BiCookie color="black" style={{ fontSize: 16 }} />,
         options: flavourOptions,
     },
     {
         label: 'Animals',
-        icon: <BiBug color="black" size={16} />,
+        icon: <BiBug color="black" style={{ fontSize: 16 }} />,
         options: animalOptionsWithDescriptions,
     },
 ]
@@ -121,19 +98,24 @@ const groupedCustomOptions = [
 
 const StyledOption = styled(Select.Option)`
     display: grid;
-    grid-template-columns: 1fr auto;
     align-items: center;
     grid-gap: 10px;
 `
 
-const CustomOption = ({ children, ...props }) => {
-    return (
-        <StyledOption {...props}>
-            {props.data.icon} {children}
-            {props.isSelected ? <BiCheck color="black" size={16} /> : null}
-        </StyledOption>
-    )
-}
+const CustomOption =
+    (config) =>
+    ({ children, ...props }) => {
+        return (
+            <StyledOption {...props} {...config}>
+                {config?.iconLeft && props.data.icon}
+                {children}
+                {config?.iconRight && props.data.icon}
+                {props.isSelected ? (
+                    <BiCheck color="black" style={{ fontSize: 16 }} />
+                ) : null}
+            </StyledOption>
+        )
+    }
 
 const CustomSingleValue = ({ children, ...props }) => {
     return (
@@ -158,7 +140,11 @@ const Description = styled.p`
     padding: 0;
 `
 
-const Tick = styled(BiCheck)`
+const Wrapper = styled.main`
+    padding: 30px;
+`
+
+const StyledTick = styled(BiCheck)`
     position: absolute;
     right: 10px;
     top: 50%;
@@ -170,7 +156,9 @@ const OptionDescription = ({ children, ...props }) => {
         <StyledOptionDescription {...props}>
             <span>{children}</span>
             <Description>{props.data.description}</Description>
-            {props.isSelected ? <Tick color="black" size={24} /> : null}
+            {props.isSelected ? (
+                <StyledTick color="black" style={{ fontSize: 20 }} />
+            ) : null}
         </StyledOptionDescription>
     )
 }
@@ -184,7 +172,7 @@ function App() {
     const [groupedCustom, setGroupedCustom] = useState('')
 
     return (
-        <>
+        <Wrapper>
             <section>
                 <h1>Basic select</h1>
                 <Select
@@ -227,12 +215,15 @@ function App() {
                 <Select
                     label="Pick your favourite country"
                     name="custom"
-                    isSearchable={false}
                     options={countryOptionsWithIcons}
                     components={{
-                        Option: CustomOption,
+                        Option: CustomOption({
+                            iconRight: true,
+                            iconLeft: false,
+                        }),
                         SingleValue: CustomSingleValue,
                     }}
+                    booyah
                     onChange={({ value }) => setCustom(value)}
                 />
                 <h3>Your selection: {JSON.stringify(custom)}</h3>
@@ -261,7 +252,7 @@ function App() {
                 />
                 <h3>Your selection: {JSON.stringify(groupedCustom)}</h3>
             </section>
-        </>
+        </Wrapper>
     )
 }
 

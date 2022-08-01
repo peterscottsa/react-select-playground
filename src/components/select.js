@@ -1,6 +1,7 @@
 import React from 'react'
 import * as s from './select.styles'
 import ReactSelect from 'react-select'
+import { BiCheck } from 'react-icons/bi'
 
 export const Select = ({ components, styles, name, label, ...props }) => {
     return (
@@ -70,27 +71,7 @@ const GroupHeading = ({ children, ...props }) => (
     </s.GroupHeading>
 )
 
-const TickIcon = () => (
-    <svg
-        width="16"
-        height="16"
-        viewBox="0 0 24 24"
-        fill="#000000"
-        role="presentation"
-        data-telescope-icon="true"
-        color="currentColor"
-        className="sc-bdfBwQ iXgbQJ"
-    >
-        <g clipPath="url(#clip0_265_312)">
-            <path d="M21.879 7.754L9.803 19.743a.49.49 0 01-.301.115.486.486 0 01-.3-.116l-7.08-7.027a.428.428 0 010-.597l2.915-2.894c.162-.16.44-.16.601 0l3.864 3.858 8.86-8.818c.162-.16.44-.16.602 0l2.915 2.893a.428.428 0 010 .597z" />
-        </g>
-        <defs>
-            <clipPath id="clip0_265_312">
-                <rect width="20" height="20" transform="translate(2 2)" />
-            </clipPath>
-        </defs>
-    </svg>
-)
+const TickIcon = () => <BiCheck style={{ fontSize: 20 }} color="black" />
 
 const Option = ({ children, ...props }) => (
     <s.Option {...props}>
